@@ -1,14 +1,26 @@
 export default function handler(req, res) {
 	if (req.method === "POST") {
-		const { data } = req.body;
+		const { name, email, url } = req.body;
 
-		if (typeof data !== "string") {
-			return res.status(400).json({ error: "Data must be a string." });
+		if (
+			typeof name !== "string" ||
+			typeof email !== "string" ||
+			typeof url !== "string"
+		) {
+			return res
+				.status(400)
+				.json({ error: "Name, email, and URL must be strings." });
 		}
 
-		const sorted = data.split("").sort();
-		res.status(200).json({ word: sorted });
+		const cleanedUrl = url.toLowerCase().trim();
+		const sorted = cleanedUrl.split("").sort();
+
+		return res.status(200).json({
+			name,
+			email,
+			sorted,
+		});
 	} else {
-		res.status(405).json({ error: "Only POST requests are allowed." });
+		return res.status(405).json({ error: "Only POST requests allowed" });
 	}
 }

@@ -6,23 +6,31 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<h1>Sort Webhook Tester</h1>
 		<section id="api-form">
+			<h1>Sort Webhook Tester</h1>
 			<form id="sortForm">
 				<label>
-					Email:
-					<input type="email" id="email" required />
+					Name:<br />
+					<input type="text" id="name" required />
 				</label>
 				<br /><br />
 				<label>
-					URL to test:
+					Email:<br />
+					<input type="email" id="email" required />
+				</label>
+				<div id="email-warning">Please enter a valid email address.</div>
+				<br /><br />
+				<label>
+					URL to test:<br />
 					<input type="text" id="url" required />
 				</label>
+				<div id="url-warning">Please enter a valid URL.</div>
 				<br /><br />
-				<button type="submit">Submit</button>
+				<button type="submit" disabled>Submit</button>
 			</form>
+
+			<div id="response-box"></div>
 		</section>
-		<pre id="result"></pre>
 
 		<script src="app.js"></script>
 	</body>

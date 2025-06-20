@@ -1,4 +1,7 @@
 body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 	font-family: Arial, sans-serif;
 	background-image: url(cat-background.jpg);
 	background-repeat: repeat;
@@ -17,7 +20,8 @@ body {
 
 h1 {
 	text-align: center;
-	color: white;
+	color: #1f0df0;
+	font-size: 64px;
 }
 
 form {
@@ -36,11 +40,13 @@ button {
 	font-size: 16px;
 }
 
-button {
-	font-weight: bold;
+input {
+	width: 100%;
+	box-sizing: border-box;
 }
 
 button {
+	font-weight: bold;
 	background-color: #4720c7;
 	color: white;
 	border: none;
@@ -59,4 +65,44 @@ button:hover {
 	border: 2px solid #3320b7;
 	border-radius: 5px;
 	background: rgb(140, 134, 179);
+}
+
+#url-warning,
+#email-warning {
+	color: rgb(102, 13, 13);
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-top: 4px;
+	display: none;
+}
+
+button:disabled {
+	background-color: #999999;
+	cursor: not-allowed;
+	color: #666666;
+}
+
+.response-message {
+	background-color: #ffffff;
+	color: #333;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.response-message p {
+	margin: 0 0 10px;
+	line-height: 1.4;
+}
+
+.original-email {
+	color: #1f0df0;
+	font-weight: bold;
+}
+
+.sorted-email {
+	color: #009688;
+	font-weight: bold;
+	font-family: monospace;
 }
