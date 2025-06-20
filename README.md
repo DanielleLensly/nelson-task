@@ -1,5 +1,1 @@
-This project is a simple web app that lets users enter their name, email address, and a word. It validates the inputs to ensure the email is properly formatted and the word contains only letters. 
-
-When submitted, the form sends the data to an API, which alphabetically sorts the letters of the word and returns a personalized response. 
-
-The response displays the user’s name, the email they entered, and the sorted version of their word in a styled message box.
+I built a simple web app using HTML, CSS, and JavaScript, with a serverless API deployed on Vercel. The front end contains a form that collects a user's name, email address, and a word. I implemented client-side validation using JavaScript to ensure the email is properly formatted (based on a recommended regex) and the word contains only alphabetic characters. Once validated, the data is sent via a POST request to an API endpoint (/api/sorter). The API, written in JavaScript, receives the data, converts the word to lowercase, alphabetically sorts its letters, and returns a JSON response. The front end then displays a friendly, personalized message with the original email and the sorted word.
