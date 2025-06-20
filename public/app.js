@@ -1,38 +1,34 @@
 const form = document.getElementById("sortForm");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
-const urlInput = document.getElementById("url");
+const wordInput = document.getElementById("word");
 
 const emailWarning = document.getElementById("email-warning");
-const urlWarning = document.getElementById("url-warning");
+const wordWarning = document.getElementById("word-warning");
 
 const submitButton = form.querySelector('button[type="submit"]');
 const result = document.getElementById("response-box");
 
 let emailTouched = false;
-let urlTouched = false;
+let wordTouched = false;
 
 function validateEmail(email) {
-	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+	const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+	return emailRegex.test(email);
 }
 
-function validateUrl(value) {
-	try {
-		new URL(value);
-		return true;
-	} catch {
-		return false;
-	}
+function validateWord(value) {
+	return /^[a-zA-Z]+$/.test(value);
 }
 
 function updateSubmitButtonState() {
 	const emailValid = validateEmail(emailInput.value);
-	const urlValid = validateUrl(urlInput.value);
+	const wordValid = validateWord(wordInput.value);
 
 	emailWarning.style.display = emailTouched && !emailValid ? "block" : "none";
-	urlWarning.style.display = urlTouched && !urlValid ? "block" : "none";
+	wordWarning.style.display = wordTouched && !wordValid ? "block" : "none";
 
-	submitButton.disabled = !(emailValid && urlValid);
+	submitButton.disabled = !(emailValid && wordValid);
 }
 
 emailInput.addEventListener("input", () => {
@@ -44,12 +40,12 @@ emailInput.addEventListener("blur", () => {
 	updateSubmitButtonState();
 });
 
-urlInput.addEventListener("input", () => {
-	urlTouched = true;
+wordInput.addEventListener("input", () => {
+	wordTouched = true;
 	updateSubmitButtonState();
 });
-urlInput.addEventListener("blur", () => {
-	urlTouched = true;
+wordInput.addEventListener("blur", () => {
+	wordTouched = true;
 	updateSubmitButtonState();
 });
 
@@ -67,7 +63,7 @@ form.addEventListener("submit", async (e) => {
 			body: JSON.stringify({
 				name: nameInput.value.trim(),
 				email: emailInput.value.trim(),
-				url: urlInput.value.trim(),
+				word: wordInput.value.trim(),
 			}),
 		});
 
@@ -81,7 +77,7 @@ form.addEventListener("submit", async (e) => {
 					<p><strong>Hi ${json.name}</strong>,</p>
 					<p>Here's the email address you added:</p>
 					<p class="original-email">${json.email}</p>
-					<p>And here is your URL sorted alphabetically:</p>
+					<p>And here is your word sorted alphabetically:</p>
 					<p class="sorted-email">${json.sorted.join("")}</p>
 				</div>
 			`;

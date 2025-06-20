@@ -58,6 +58,12 @@ button:hover {
 	background-color: #005ad3;
 }
 
+button:disabled {
+	background-color: #999999;
+	cursor: not-allowed;
+	color: #666666;
+}
+
 #response-box {
 	min-height: 200px;
 	margin-top: 30px;
@@ -67,20 +73,14 @@ button:hover {
 	background: rgb(140, 134, 179);
 }
 
-#url-warning,
-#email-warning {
+#email-warning,
+#word-warning {
 	color: rgb(102, 13, 13);
 	font-size: 20px;
 	font-weight: bold;
 	text-decoration: underline;
 	margin-top: 4px;
 	display: none;
-}
-
-button:disabled {
-	background-color: #999999;
-	cursor: not-allowed;
-	color: #666666;
 }
 
 .response-message {
