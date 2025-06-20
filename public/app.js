@@ -18,7 +18,8 @@ function validateEmail(email) {
 }
 
 function validateWord(value) {
-	return /^[a-zA-Z]+$/.test(value);
+	// ✅ changed to allow letters and numbers after sending test and getting feedback
+	return /^[a-zA-Z0-9]+$/.test(value);
 }
 
 function updateSubmitButtonState() {
